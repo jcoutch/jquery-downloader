@@ -1,5 +1,7 @@
-$.download = function(settings) {
-  var newSettings = $.extend(true, {}, settings);
+function() {
+ var jq = jQuery || $;
+ jq.download = function(settings) {
+  var newSettings = jq.extend(true, {}, settings);
   var oldSuccess = settings.success || function(data) { return { fileName: "download", data: data }; };
   newSettings.success = function() {
     // { fileName: '', contentType: '', data: '' }
@@ -18,5 +20,6 @@ $.download = function(settings) {
     }
   };
 
-  $.ajax(newSettings);
-};
+  jq.ajax(newSettings);
+ };
+}();
